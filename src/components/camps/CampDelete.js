@@ -19,7 +19,7 @@ class CampDelete extends React.Component {
             //     </div>
             //     <button onClick={() => this.props.deleteCamp(this.props.match.params.id)} className="ui button" >Delete</button>
             // </div>
-            <div class="ui  cards">
+            <div class="ui  cards mt-5">
                 <div class="ui  centered card" >
                     <div class="content">
                         <div class="header">

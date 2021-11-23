@@ -20,26 +20,13 @@ export const signOut = () => {
 export const fetchCamps = () => async dispath => {
     const response = await camps.get('/camp')
     dispath({ type: FETCH_CAMPS, payload: response.data })
-    // console.log('test for action')
 }
 export const createCamp = (formValue) => async (dispath, getState) => {
-    // console.log(getState().auth.userProfile.sT)
-    // ax:{
-    // HU: "梓育"
-    // Re: "戴梓育"
-    // Tt: "bm414148@gmail.com"
-    // YS: "戴"
-    // lK: "https://lh3.googleusercontent.com/a/AATXAJyeo5WlQcrG0ney-JAPGrMjZ8o0MkEU8-vWqbJY=s96-c"
-    // sT: "114821509260256156621"
-    // }
-    const userId = getState().auth.userProfile.uT
-    console.log('userId',userId)
-    const response = await camps.post('/camp', { ...formValue,userId,"comment":[]})
+    const response = await camps.post('/camp', { ...formValue,"comment":[]})
     console.log('response',response)    
     dispath({ type: CREATE_CAMP, payload: response.data })
     history.push('/')
 }
-
 export const fetchCamp = (id) => async dispath => {
     const response = await camps.get(`/camp/${id}`)
     dispath({ type: FETCH_CAMP, payload: response.data })
