@@ -44,6 +44,9 @@ export const fetchCamp = (id) => async dispath => {
     const response = await camps.get(`/camp/${id}`)
     dispath({ type: FETCH_CAMP, payload: response.data })
 }
+
+//PUT 通常做替換一個資源功能。
+//PATCH 修改資源的部分內容。
 export const editCamp = (id, formValue) => async dispath => {
     const response = await camps.patch(`/camp/${id}`, formValue)
     dispath({ type: EDIT_CAMP, payload: response.data })
