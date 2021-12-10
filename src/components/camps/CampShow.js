@@ -11,8 +11,10 @@ import markImage from '../../image/location_map_pin_mark_icon_148684.png'
 import Rating from 'react-rating'
 
 class CampShow extends React.Component {
+    state = {loc:[121.53424836855744, 24.94326989048007]}
     componentDidMount() {
         this.props.fetchCamp(this.props.match.params.id)
+        if (this.props.camp) this.getCoordinate()        
 
     }
  
@@ -53,8 +55,10 @@ class CampShow extends React.Component {
             // ?No. 8, Xinrong St. Zhongli Dist., Taoyuan City
             limit: 1
         }).send()
-        console.log('ggeo', geoData.body.features[0].geometry.coordinates)
-        return (geoData.body.features[0].geometry.coordinates)
+        console.log('GEOCODING', geoData.body.features[0].geometry.coordinates)
+        this.setState({loc:geoData.body.features[0].geometry.coordinates})
+        console.log('STATE',this.state.loc)
+
     }
     renderComment = () => {
         console.log('comm', this.props.camp.comment)
@@ -126,8 +130,12 @@ class CampShow extends React.Component {
         });
         const lng = [121.53424836855744, 24.94326989048007]
         if (!this.props.camp) return <div>Loading...</div>
-        const campocation = this.getCoordinate()
-
+        // this.getCoordinate()
+        // const camplocation = this.getCoordinate()
+        // console.log('camploaction',camplocation)
+        console.log('-------STATE------',this.state.loc)
+        // let tep = this.state.loc
+        // console.log(tep)
         return (
             <div>
                 {/* <div className="ui items"> */}
@@ -157,7 +165,7 @@ class CampShow extends React.Component {
                         <h3>{this.props.camp.location}</h3>
                         <Map
                             style="mapbox://styles/mapbox/streets-v9"
-                            center={lng}
+                            center={this.state.loc}
                             //前經度後尾度
 
                             containerStyle={{
@@ -166,12 +174,12 @@ class CampShow extends React.Component {
                             }}
                         >
                             <Marker
-                                coordinates={lng}
+                                coordinates={this.state.loc}
                                 anchor="bottom">
                                 <img className="ui mini image" src={markImage} />
                             </Marker>
                             <Layer type="symbol" id="marker" layout={{ 'icon-image': 'marker-15' }}>
-                                <Feature coordinates={[121.53424836855744, 24.94326989048007]} />
+                                <Feature coordinates={this.state.loc} />
                             </Layer>
                         </Map>
                     </div>
