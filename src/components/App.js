@@ -127,7 +127,6 @@ const App = () => {
                 {/* <img style={{width: '100%',height: imgWidth }} src="https://images.unsplash.com/photo-1488790881751-9068aa742b9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1032&q=80" /> */}
                 <div className="ui container">
                     <Switch>
-                        console.log('123')
                         <Route exact path="/" component={CampList} />
                         <Route exact path="/camp/create" component={CampCreate} />
                         <Route exact path="/camp/edit/:id" component={CampEdit} />

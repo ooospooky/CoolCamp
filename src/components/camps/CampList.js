@@ -100,6 +100,7 @@ class CampList extends React.Component {
                     {this.renderList(this.state.where)}
                 </div>
                 {this.props.authId ? <Link to='/camp/create/' className="ui button primary m-2 mb-5">Create Camp</Link> : null}
+                
             </div>
         )
     }
