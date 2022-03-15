@@ -12,8 +12,8 @@ import camps from '../../apis/camps'
 class CampCreate extends React.Component {
 
 
-    renderSubmit = (formValue) => {
-        this.props.onSubmit(formValue)
+    renderSubmit = (formValue,imageId) => {
+        this.props.onSubmit(formValue,imageId)
     }
     renderError({ meta }) {
         if (meta.error && meta.touched) {
@@ -36,12 +36,12 @@ class CampCreate extends React.Component {
         )
     }
     render() {
-
+        console.log(this.props.publicId)
         return (
             <div>
                 {/* <img src=   alt="" width="100" /> */}
-
-                <form encType="multipart/form-data" className="ui form error" onSubmit={this.props.handleSubmit(this.renderSubmit)}>
+                <h1>{this.props.publicId}</h1>
+                <form encType="multipart/form-data" className="ui form error" onSubmit={this.props.handleSubmit(this.renderSubmit),this.props.publicId}>
                     <Field name="title" component={this.renderInput} type="text" label="Enter Title" />
                     <Field name="description" label="Enter Description" component={this.renderInput} type="text" />
                     <Field name="location" label="Enter Location" component={this.renderInput} type="text" />

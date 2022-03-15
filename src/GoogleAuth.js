@@ -80,6 +80,7 @@ class GoogleAuth extends React.Component {
                 
                 <button className="ui google plus  button" onClick={this.onSignOutClick}>
                     <i className="google icon"></i>
+                    
                     Sign Out
                 </button>
                 
@@ -96,10 +97,11 @@ class GoogleAuth extends React.Component {
         }
     }
     render() {
+        console.log(this.props.auth)
         return (
             <div className="right menu">
                 {this.renderAuthButton()}   
-                {this.props.isSignedIn? <img class="ui mini circular image" src={this.props.auth.oK}></img>: null}
+                {this.props.isSignedIn? <img class="ui mini circular image" src={this.props.auth.AN}></img>: null}
             </div>
             
         )

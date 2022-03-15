@@ -9,7 +9,7 @@ import { fetchCamp } from '../../action'
 import CommentCreate from './CommentCreate';
 import markImage from '../../image/location_map_pin_mark_icon_148684.png'
 import Rating from 'react-rating'
-
+import {Image} from 'cloudinary-react'
 class CampShow extends React.Component {
     state = {loc:[121.53424836855744, 24.94326989048007]}
     componentDidMount() {
@@ -28,6 +28,7 @@ class CampShow extends React.Component {
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
+                    {/* <Image cloudName="dsmgwkxbl" publicId="temtcbjiczlznjxri2id"></Image> */}
                         <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80" class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item">
