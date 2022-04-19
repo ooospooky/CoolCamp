@@ -14,15 +14,18 @@ const Header = (props) => {
                 </Link>
                 <Link to="/" className="item">
                     <i className="info circle icon " />
-                    About us
+                    {/* About us */}
+                    關於我們
                 </Link>
-                <Link to="/" className="item">
+                <Link to="/camp/1" className="item">
                     <i className="fire icon " />
-                    most popular
+                    {/* most popular */}
+                    最受歡迎
                 </Link>
                 <Link to="/camp/create" className="item">
                     <i className="ui plus  icon"></i>
-                    Create campground
+                    {/* Create campground */}
+                    新建露營地
                 </Link>
                 <div className="right menu">
                     <GoogleAuth />

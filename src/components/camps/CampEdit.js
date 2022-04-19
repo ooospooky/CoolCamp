@@ -15,17 +15,17 @@ class CampEdit extends React.Component{
     renderButton=()=>{
         return(
             
-                <button className="ui button primary mt-2" type="submit">Edit</button>
+                <button className="ui button primary mt-2" type="submit">修改</button>
             
         )
     }
    render(){
        if(!this.props.camp) return <div>Loading</div>
-       console.log(this.props.camp)
+    //    console.log(this.props.camp)
        return(
            <div>
-               <h3>Edit your camp</h3>
-               < CampForm onSubmit={this.renderSubmit} renderButton={this.renderButton} initialValues={{title:this.props.camp.title,description:this.props.camp.description,location:this.props.camp.location,locationTag:this.props.camp.locationTag,advantageTag:this.props.camp.advantageTag}}/>
+               <h3 className="mt-1">修改露營地</h3>
+               < CampForm onSubmit={this.renderSubmit} renderButton={this.renderButton} initialValues={{title:this.props.camp.title,description:this.props.camp.description,location:this.props.camp.location,locationTag:this.props.camp.locationTag,advantageTag:this.props.camp.advantageTag,notes:this.props.camp.notes}}/>
            </div>
        )
    } 

@@ -32,7 +32,7 @@ export const createCamp = (formValue) => async (dispath, getState) => {
     // lK: "https://lh3.googleusercontent.com/a/AATXAJyeo5WlQcrG0ney-JAPGrMjZ8o0MkEU8-vWqbJY=s96-c"
     // sT: "114821509260256156621"
     // }
-    const userId = getState().auth.userProfile.uT
+    const userId = getState().auth.userProfile.SW
     console.log('userId',userId)
     const response = await camps.post('/camp', { ...formValue,userId,"comment":[]})
     console.log('response',response)    
@@ -59,6 +59,7 @@ export const deleteCamp = (id) => async dispath => {
 }
 export const createComment =(campId,commentValue)=>async dispath=>{
     const campData = await camps.get(`/camp/${campId}`)
+    console.log('CHECKKkkkkkk',commentValue)
     console.log('before push',campData.data.comment)
     if(!campData.data.comment){
         campData.data.comment = commentValue
@@ -71,7 +72,7 @@ export const createComment =(campId,commentValue)=>async dispath=>{
     // dispath({ type:"CREATE_COMMENT",payload:response.data})
     // const response = await camps.get(`camp/${campId}`)
     // console.log('work',response)
-    // history.push(`/camp/${campId}`)
-    // history.go(0)
-    window.location.reload()
+    history.push('/')   
+    history.push(`/camp/${campId}`)
+    // window.location.reload()
 }

@@ -19,21 +19,23 @@ class CampDelete extends React.Component {
             //     </div>
             //     <button onClick={() => this.props.deleteCamp(this.props.match.params.id)} className="ui button" >Delete</button>
             // </div>
+            <div >
             <div class="ui  cards">
                 <div class="ui  centered card" >
                     <div class="content">
                         <div class="header">
-                            Delete Camp
+                            刪除露營地
                         </div>
-                        <div className="description">Are you sure?</div>
+                        <div className="description">確定刪除"{this.props.camp.title}"嗎？</div>
                         <div class="extra content">
                             <div class="ui two  buttons">
-                                <div onClick={()=>history.push('/')}  class="ui basic grey  button">Cancel</div>
-                                <div onClick={() => this.props.deleteCamp(this.props.match.params.id)} class="ui basic red button">Delete</div>
+                                <div onClick={()=>history.push('/')}  class="ui basic grey  button">取消</div>
+                                <div onClick={() => this.props.deleteCamp(this.props.match.params.id)} class="ui basic red button">刪除</div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
                         )
     }

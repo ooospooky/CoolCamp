@@ -2,7 +2,7 @@ import React from 'react';
 import test_qrcode from '../image/test_qrcode.png';
 const Footer = () => {
     return (
-        <div className="mt-5">
+        <div className="mt-5 " >
             <div style={{ width: '100%', height: '130px', backgroundColor: '#1C2331' }}>
                 <div style={{ color: '#FFFFFF' }} className="container">
                     <div className="ui grid">
@@ -14,9 +14,11 @@ const Footer = () => {
                         </div>
                         
                         <div style={{ textAlign: 'center' }} className="five wide column">
-                            <h5>Contact Us</h5>
+                            {/* <h5>Contact Us</h5> */}
+                            <h5>聯絡我們</h5>
                             <div style={{textAlign:'left'}}>
-                            <p> <i className="home icon"/> Gongzhuan Rd. Taishan Dist., New Taipei City</p>
+                            {/* <p> <i className="home icon"/> Gongzhuan Rd. Taishan Dist., New Taipei City</p> */}
+                            <p> <i className="home icon"/> 新北市泰山區工專路84號   </p>
                             <p><i className="phone icon"/>0912345678</p>
                             <p><i className="mail icon"/>bm414148@gmail.com</p>
                             </div>

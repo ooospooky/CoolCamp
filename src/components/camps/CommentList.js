@@ -11,7 +11,7 @@ class CommentList extends React.Component {
                     <div class="content">
                         <a class="author">{this.props.author}</a>
                         <div class="metadata">
-                            <div class="date">2 days ago</div>
+                            <div class="date">1 天前</div>
                             <div class="rating">
                             <Rating readonly initialRating={this.props.rating} style={{"color":"black"}} emptySymbol="fa-sm far fa-star" fullSymbol="fa-sm fa fa-star" />
                             </div>

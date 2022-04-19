@@ -80,8 +80,8 @@ class GoogleAuth extends React.Component {
                 
                 <button className="ui google plus  button" onClick={this.onSignOutClick}>
                     <i className="google icon"></i>
-                    
-                    Sign Out
+                    登出
+                    {/* Sign Out */}
                 </button>
                 
                 
@@ -91,7 +91,7 @@ class GoogleAuth extends React.Component {
             return (
                 <button className="ui google plus button" onClick={this.onSignInClick}>
                     <i className="google icon"></i>
-                    Sign In
+                    登入
                 </button>
             )
         }

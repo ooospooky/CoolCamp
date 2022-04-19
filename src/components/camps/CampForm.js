@@ -12,8 +12,8 @@ import camps from '../../apis/camps'
 class CampCreate extends React.Component {
 
 
-    renderSubmit = (formValue,imageId) => {
-        this.props.onSubmit(formValue,imageId)
+    renderSubmit = (formValue) => {
+        this.props.onSubmit(formValue)
     }
     renderError({ meta }) {
         if (meta.error && meta.touched) {
@@ -36,22 +36,22 @@ class CampCreate extends React.Component {
         )
     }
     render() {
-        console.log(this.props.publicId)
+        // console.log(this.props.publicId)
         return (
             <div>
                 {/* <img src=   alt="" width="100" /> */}
                 <h1>{this.props.publicId}</h1>
-                <form encType="multipart/form-data" className="ui form error" onSubmit={this.props.handleSubmit(this.renderSubmit),this.props.publicId}>
-                    <Field name="title" component={this.renderInput} type="text" label="Enter Title" />
-                    <Field name="description" label="Enter Description" component={this.renderInput} type="text" />
-                    <Field name="location" label="Enter Location" component={this.renderInput} type="text" />
+                <form encType="multipart/form-data" className="ui form error" onSubmit={this.props.handleSubmit(this.renderSubmit)}>
+                    <Field name="title" component={this.renderInput} type="text" label="營地名稱 :" />
+                    <Field name="description" label="營地描述 :" component={this.renderInput} type="text" />
+                    <Field name="location" label="營地位置 :" component={this.renderInput} type="text" />
                     {/* <Field name="files" component={renderDropzoneInput} /> */}
                     {/* <input type="file" name="image" multiple /> */}
                     {/* <Field name="image" component="" /> */}
                     {/* <FileInput /> */}
                     {/* <Field name="image" component={FileInput} />  */}
                     <div>
-                        <label>Notes</label>
+                        <label>營地須知 :</label>
                         <div>
                             <Field name="notes" component="textarea" />
                         </div>
@@ -77,26 +77,28 @@ class CampCreate extends React.Component {
 
 
                     <div>
-                        <label>Select Location Tag</label>
+                        {/* <label>Select Location Tag</label> */}
+                        <label>營地的位置標籤 :</label>
                         <div>
                             <Field name="locationTag" component="select">
                                 <option></option>
-                                <option value="North">North</option>
-                                <option value="South">South</option>
-                                <option value="East">East</option>
-                                <option value="West">West</option>
+                                <option value="北部">北部</option>
+                                <option value="南部">南部</option>
+                                <option value="東部">東部</option>
+                                <option value="中部">中部</option>
                             </Field>
                         </div>
                     </div>
                     <div>
-                        <label>Choose Advantage Tag </label>
+                        {/* <label>Choose Advantage Tag </label> */}
+                        <label> 選擇營地具備的優勢 : </label>
                         <div>
                             <Field name="advantageTag" component="select">
                                 <option></option>
-                                <option value="View">View</option>
-                                <option value="Lake">Lake</option>
-                                <option value="Stream">Stream</option>
-                                <option value="Hiking">Hiking</option>
+                                <option value="景觀">景觀</option>
+                                <option value="湖畔">湖畔</option>
+                                <option value="小溪/河流">小溪/河流</option>
+                                <option value="登山">登山</option>
                             </Field>
                         </div>
                     </div>

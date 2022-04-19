@@ -83,7 +83,7 @@ class CampShow extends React.Component {
                 <br />
                 <Rating readonly initialRating={average} style={{ "color": "green" }} emptySymbol="fa-sm far fa-star" fullSymbol="fa-sm fa fa-star" />
                 <br />
-                {this.props.camp.comment.length} reviews
+                {this.props.camp.comment.length} 則留言
 
             </div>
         )
@@ -107,9 +107,11 @@ class CampShow extends React.Component {
                 <div className="item">
                     <div className="middle aligned content">
                         <div className="dexcription">
-                            View Average Star:
+                            {/* View Average Star: */}
+                            景觀平均分數:
                             <br />
-                            Bathroom Average Star:
+                            {/* Bathroom Average Star: */}
+                            浴廁平均分數:
                         </div>
 
                     </div>
@@ -140,7 +142,7 @@ class CampShow extends React.Component {
         return (
             <div>
                 {/* <div className="ui items"> */}
-                <h2> Camp detail</h2>
+                {/* <h2> Camp detail</h2> */}
                
                 {/* onClick={(e)=>console.log(e)}   */}
                 {/* <Rating  emptySymbol="fa-lg far fa-star" fullSymbol="fa-lg fa fa-star"/> */}
@@ -156,8 +158,11 @@ class CampShow extends React.Component {
                             <div className="content">
                                 {/* <div className="header">Title:{this.props.camp.title}</div> */}
                                 <h3>{this.props.camp.title}</h3>
-                                <div className="text-muted">Description</div>
+                                <div className="text-muted"><h3>簡介:</h3></div>
                                 <div className="description">{this.props.camp.description}</div>
+                                <div className="text-muted"><h3>注意須知:</h3></div>
+                                 {/* https://simonallen.coderbridge.io/2020/07/03/replace-br/ */}
+                                <div className="description"><p style={{whiteSpace:'pre-line'}}>{this.props.camp.notes} </p></div>
                             </div>
                         </div>
                     </div>
