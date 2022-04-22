@@ -5,7 +5,7 @@ import mbxGeocoding from '@mapbox/mapbox-sdk/services/geocoding'
 import ReactMapboxGl, { Layer, Feature, Marker } from 'react-mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import CommentList from './CommentList';
-import { fetchCamp } from '../../action'
+import { fetchCamp,deleteComment } from '../../action'
 import CommentCreate from './CommentCreate';
 import markImage from '../../image/location_map_pin_mark_icon_148684.png'
 import Rating from 'react-rating'
@@ -17,7 +17,6 @@ class CampShow extends React.Component {
         if (this.props.camp) this.getCoordinate()        
 
     }
- 
     renderImage() {
         return (
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -62,12 +61,11 @@ class CampShow extends React.Component {
 
     }
     renderComment = () => {
-        console.log('comm', this.props.camp.comment)
         if (!this.props.camp.comment) return null
         // if(!this.props.camp.comment[1])return <CommentList title={this.props.camp.comment.title} comment={this.props.camp.comment.comment} author={this.props.camp.comment.author} />
         return this.props.camp.comment.map((comm) => {
             return (
-                <CommentList title={comm.title} comment={comm.comment} author={comm.author} img={comm.img} rating={comm.rating} />
+                <CommentList    title={comm.title} comment={comm.comment} author={comm.author} img={comm.img} rating={comm.rating}  commentId={comm.id} campId={this.props.camp.id}  commentAuthorId={comm.authorId}/>
             )
         })
     }
@@ -136,7 +134,6 @@ class CampShow extends React.Component {
         // this.getCoordinate()
         // const camplocation = this.getCoordinate()
         // console.log('camploaction',camplocation)
-        console.log('-------STATE------',this.state.loc)
         // let tep = this.state.loc
         // console.log(tep)
         return (

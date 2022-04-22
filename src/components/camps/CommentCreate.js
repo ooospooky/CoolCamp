@@ -11,7 +11,7 @@ class CommentCreate extends React.Component {
         // console.log('submit', value)
         const commentId = uuidv4()
         const Tvalue = value
-        const formValue = { ...Tvalue, id: commentId, author: this.props.author.sf,img:this.props.author.AN}
+        const formValue = { ...Tvalue, id: commentId, author: this.props.author.sf,img:this.props.author.NN, authorId:this.props.author.fX}
         // console.log(value.push({aurthId:"11231"}))
         console.log(formValue)
         this.props.createComment(this.props.campId, formValue)

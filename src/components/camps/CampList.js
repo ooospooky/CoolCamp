@@ -1,14 +1,28 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { connect } from 'react-redux';
 import { fetchCamps } from '../../action'
 import { Link } from 'react-router-dom'
 import history from '../../history'
 import './CampList.css'
-class CampList extends React.Component {
 
-    state = { where: 'all' }
+import {db} from '../../firebase-config'
+import  {collection, getDocs, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore';
+
+const campCollectionRef = collection(db,'camp')
+class CampList extends React.Component {
+    
+    state = { where: 'all', firecamp:[]}
     componentDidMount() {
-        this.props.fetchCamps()
+        this.props.fetchCamps();
+        const getCamp = async()=>{
+            const data = await getDocs(campCollectionRef);
+            console.log("DOC",data.docs)
+            // setCamp(data.docs.map((doc)=> ({...doc.data(),id:doc.id})));
+            this.setState({ firecamp: data.docs.map((doc)=> ({...doc.data()})) })
+            console.log('firebase',this.state.firecamp)
+          }
+        getCamp();
+          
     }
     limitDescription(description) {
         let str = ""
@@ -24,9 +38,8 @@ class CampList extends React.Component {
     renderButton(camp) {
 
         if (!this.props.authId) return null
-        console.log('USER_ID:',this.props.authId.SW)
-        console.log('cAMP_ID:',camp)
-        if (this.props.authId.SW == camp.userId) {
+        // console.log('USER_ID:',this.props.authId.fx)
+        if (this.props.authId.fX == camp.userId) {
             return (
                 <div>
                     <Link className="ui mini right floated negative button" to={`/camp/delete/${camp.id}`}>刪除</Link>
@@ -61,7 +74,7 @@ class CampList extends React.Component {
                                 {/* <Link className="ui right floated primary button" to={`/camp/${camp.id}`} > View </Link> */}
                             </div>
                         </div>
-                        {this.props.authId && this.props.authId.SW === camp.userId ? <div className="extra content">{this.renderButton(camp)}</div> : null}
+                        {this.props.authId && this.props.authId.fX === camp.userId ? <div className="extra content">{this.renderButton(camp)}</div> : null}
                         <div class="extra content">
                             <span class="right floated">
                                 {camp.locationTag ? <i style={{ backgroundColor: '#ada6a6' }} className="ui  mini tag label">{camp.locationTag}</i> : null}
@@ -106,7 +119,7 @@ class CampList extends React.Component {
                     {this.renderList(this.state.where)}
                 </div>
                 {this.props.authId ? <Link to='/camp/create/' className="ui button primary m-3 mb-5">新增露營地</Link> : null}
-                
+          
             </div>
         )
     }

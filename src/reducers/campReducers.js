@@ -11,6 +11,7 @@ export default (state={},action)=>{
         case FETCH_CAMP:
             return {...state,[action.payload.id]:action.payload}
         case EDIT_CAMP:
+            console.log('action',action.payload,'ID:',action.payload.id)
             return {...state,[action.payload.id]:action.payload}
         case DELETE_CAMP:
             return _.omit(state,action.payload)

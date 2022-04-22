@@ -45,12 +45,15 @@ class GoogleAuth extends React.Component {
             window.gapi.client.init({
                 prompt:"select_account consent",
                 clientId: '953062219511-qs117gs9el7orekbg1nhg2b1d4dse6fc.apps.googleusercontent.com',
-                scope: 'email'
+                scope: "profile"
             }).then(() => {
+                console.log('!!!!!',window.gapi.auth2.getAuthInstance())
                 this.auth = window.gapi.auth2.getAuthInstance();
                 this.onAuthChange(this.auth.isSignedIn.get())
                 this.auth.isSignedIn.listen(this.onAuthChange)
-                console.log(this.auth.currentUser.get().getId())
+
+        
+
             })
         })
     }
