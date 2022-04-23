@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import {fetchCamp,editCamp} from '../../action'
 import CampForm from './CampForm'
 
+
+
 class CampEdit extends React.Component{
     componentDidMount(){
         this.props.fetchCamp(this.props.match.params.id);

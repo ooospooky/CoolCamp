@@ -36,7 +36,6 @@ class CampList extends React.Component {
 
     }
     renderButton(camp) {
-
         if (!this.props.authId) return null
         // console.log('USER_ID:',this.props.authId.fx)
         if (this.props.authId.fX == camp.userId) {
@@ -55,13 +54,24 @@ class CampList extends React.Component {
             for (let i = 0; i < camp.comment.length; i++) {
                 total += camp.comment[i].rating
             }
+           
+            //set cover Image src
+            let imagedisplay = '';
+            if(!camp.imageData){
+                imagedisplay ="https://images.unsplash.com/photo-1594495894542-a46cc73e081a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+            }else{
+                imagedisplay = camp.imageData[0]['url']
+            }
+            ////////////////////
             let average = total / camp.comment.length
             if (camp.locationTag === opt || opt === 'all' )
+
+         
                 return (
                     <div class="card">
                         <div className="image image-box">
                             {/* <Link to={`/camp/${camp.id}`}><img src="https://images.unsplash.com/photo-1594495894542-a46cc73e081a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" /></Link> */}
-                            <img onClick={() => history.push(`/camp/${camp.id}`)} className="ListImage" src="https://images.unsplash.com/photo-1594495894542-a46cc73e081a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80" />
+                            <img onClick={() => history.push(`/camp/${camp.id}`)} className="ListImage" src={imagedisplay}  style={{height:'250px'}}/>
                         </div>
                         <div class="content">
                             <div class="header title"><Link style={{ color: "black" }} to={`/camp/${camp.id}`}>{camp.title}</Link></div>
