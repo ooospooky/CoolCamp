@@ -10,33 +10,79 @@ import CommentCreate from './CommentCreate';
 import markImage from '../../image/location_map_pin_mark_icon_148684.png'
 import Rating from 'react-rating'
 import {Image} from 'cloudinary-react'
+import './CampShow.css'
 class CampShow extends React.Component {
     state = {loc:[121.53424836855744, 24.94326989048007]}
     componentDidMount() {
         this.props.fetchCamp(this.props.match.params.id)
         if (this.props.camp) this.getCoordinate()        
-
     }
-    renderImage() {
-        return (
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
+    renderCarousel(){
+        if(!this.props.camp.imageData){
+            return(
+                <>
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol>
-                <div class="carousel-inner">
+                </>
+                )
+            }else{
+                return this.props.camp.imageData.map((data,i)=>{
+                    if(data['name'] === this.props.camp.imageData[0]['name']){
+                        return <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    }else{
+                        return <li data-target="#carouselExampleIndicators" data-slide-to={i}></li>
+                    }
+                })
+            }
+    }
+    checkImageExist(){
+        if(!this.props.camp.imageData){
+            return(
+                <>
                     <div class="carousel-item active">
                     {/* <Image cloudName="dsmgwkxbl" publicId="temtcbjiczlznjxri2id"></Image> */}
                         <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80" class="d-block w-100" alt="..." />
                     </div>
-                    <div class="carousel-item">
+                    <div class="carousel-item ">
                         <img src="https://images.unsplash.com/photo-1492648272180-61e45a8d98a7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80" class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item">
                         <img src="https://images.unsplash.com/photo-1496080174650-637e3f22fa03?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1119&q=80" class="d-block w-100" alt="..." />
                     </div>
+                </>
+            )
+        }else{
+            return this.props.camp.imageData.map((data)=>{
+                if(data['name'] === this.props.camp.imageData[0]['name']){
+                    return(
+                        <div class="carousel-item active">
+                            <img src={data['url']} class="d-block w-100" id="image-show" alt="Camp Image" />
+                        </div>
+                    )
+                }else{
+                    return(
+                        <div class="carousel-item  ">
+                            <img src={data['url']} class="d-block w-100" id="image-show" alt="Camp Image" />
+                        </div>
+                    )
+                }
+            })
+        }
+    }
+    renderImage() {
+        return (
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    {this.renderCarousel()}   
+                    {/* check how many pic there are,render correspond Carousel */}
+                </ol>
+            
+                <div class="carousel-inner">
+                    {this.checkImageExist()}
+                    {/* if user does't upload image, we give it default image */}
                 </div>
+
                 <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="sr-only">Previous</span>

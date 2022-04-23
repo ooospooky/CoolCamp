@@ -8,9 +8,6 @@ import { FETCH_CAMP, FETCH_CAMPS, CREATE_CAMP, EDIT_CAMP, DELETE_CAMP } from './
 import {db} from '../firebase-config'
 import  {collection, getDocs,setDoc, getDoc, addDoc, updateDoc, deleteDoc, doc} from 'firebase/firestore';
 
-function App(){
-
-}
 
 export const signIn = (userProfile) => {
     return {
@@ -31,7 +28,7 @@ export const fetchCamps = () => async dispath => {
     dispath({ type: FETCH_CAMPS, payload: response })
     // console.log('test for action')
 }
-export const createCamp = (formValue) => async (dispath, getState) => {
+export const createCamp = (formValue,imageData) => async (dispath, getState) => {
     // console.log(getState().auth.userProfile.sT)
     // ax:{
     // HU: "梓育"
@@ -44,7 +41,7 @@ export const createCamp = (formValue) => async (dispath, getState) => {
     let campId= ''
     const userId = getState().auth.userProfile.fX
     // const response = await camps.post('/camp', { ...formValue,userId,"comment":[]})
-    await addDoc(campCollectionRef, { ...formValue,userId,"comment":[]})
+    await addDoc(campCollectionRef, { ...formValue,userId,"comment":[],"imageData":imageData})
     .then((e)=>{
         campId = e.id
     })
