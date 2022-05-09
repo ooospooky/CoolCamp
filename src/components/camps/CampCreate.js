@@ -12,6 +12,7 @@ import {v4} from 'uuid'
 
 class CampCreate extends React.Component {
     state = { 
+        uploadImage:'',
         imageUpload:null,
         imageUrls: [],
         imageData:[]   //name & url
@@ -35,6 +36,7 @@ class CampCreate extends React.Component {
         )
     }
     uploadFile=()=>{
+        this.setState({uploadImage:"Uploading"})
         if (this.state.imageUpload == null) return;
         this.setState({imageData:[]}) //to prevent user click upload two time, it will clean first upload data
         for(let i =0;i<this.state.imageUpload.length;i++){   //loop time depend on how many file user chose
@@ -42,11 +44,13 @@ class CampCreate extends React.Component {
             uploadBytes(imageRef, this.state.imageUpload[i]).then((snapshot) => {
                 alert('Uploaded')
                 getDownloadURL(snapshot.ref).then((url) => {
-                    console.log('url',url)
                     // setImageUrls((prev) => [...prev, url]);
                     // this.setState({imageData:[...this.state.imageData,[snapshot.ref.name,url]]}) //firebase don't support nested array
                     this.setState({imageData:[...this.state.imageData,{"name":snapshot.ref.name,"url":url}  ]})
                     console.log('data',this.state.imageData)
+                    if(i===this.state.imageUpload.length -1){
+                        this.setState({uploadImage:"Done!"})
+                    }
                 });
             });
          }   
@@ -68,6 +72,7 @@ class CampCreate extends React.Component {
                     }}
                 />
                 <button onClick={this.uploadFile}> Upload Image</button>
+                <span>{this.state.uploadImage}</span>
                 {/* <button onClick={this.deleteFile}> Delete Image</button> */}
                 <CampForm publicId={this.state.imageId} onSubmit={this.renderSubmit} renderButton={this.renderButton} />
             </div>

@@ -12,8 +12,9 @@ const firebaseConfig = {
   measurementId: "G-5C6EGV4MHH"
 };
 
+//存取各種config key
 
 const app = initializeApp(firebaseConfig);
-
 export const db = getFirestore(app);
+
 export  const storage = getStorage(app)

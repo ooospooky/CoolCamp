@@ -1,5 +1,6 @@
 .ListImage{
     opacity:0.9 ;
+    transition: all .3s;
 }
 .image-box{ 
     overflow: hidden;
@@ -7,7 +8,7 @@
 .ListImage:hover{
     cursor: pointer;
     opacity: 1;
-    transform: scale(1,1.1);
+    transform: scale(1.1);
     /* box-shadow: 10px 10px 5px rgba(0,0,0,0,8); */
     /* box-shadow: inset 0 0 0 30px #fa0; */
 }

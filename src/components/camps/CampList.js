@@ -57,7 +57,7 @@ class CampList extends React.Component {
            
             //set cover Image src
             let imagedisplay = '';
-            if(!camp.imageData){
+            if(!camp.imageData || camp.imageData.length === 0){
                 imagedisplay ="https://images.unsplash.com/photo-1594495894542-a46cc73e081a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
             }else{
                 imagedisplay = camp.imageData[0]['url']

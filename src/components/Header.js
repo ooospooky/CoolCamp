@@ -17,7 +17,7 @@ const Header = (props) => {
                     {/* About us */}
                     關於我們
                 </Link>
-                <Link to="/camp/1" className="item">
+                <Link to="/camp/2ZS0W1kErJ8WFeF27Oiu" className="item">
                     <i className="fire icon " />
                     {/* most popular */}
                     最受歡迎

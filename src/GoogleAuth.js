@@ -104,7 +104,7 @@ class GoogleAuth extends React.Component {
         return (
             <div className="right menu">
                 {this.renderAuthButton()}   
-                {this.props.isSignedIn? <img class="ui mini circular image" src={this.props.auth.AN}></img>: null}
+                {this.props.isSignedIn? <img class="ui mini circular image" src={this.props.auth.NN}></img>: null}
             </div>
             
         )

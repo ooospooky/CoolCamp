@@ -11,6 +11,8 @@ import markImage from '../../image/location_map_pin_mark_icon_148684.png'
 import Rating from 'react-rating'
 import {Image} from 'cloudinary-react'
 import './CampShow.css'
+
+
 class CampShow extends React.Component {
     state = {loc:[121.53424836855744, 24.94326989048007]}
     componentDidMount() {
@@ -18,7 +20,7 @@ class CampShow extends React.Component {
         if (this.props.camp) this.getCoordinate()        
     }
     renderCarousel(){
-        if(!this.props.camp.imageData){
+        if(!this.props.camp.imageData || this.props.camp.imageData.length === 0){
             return(
                 <>
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -37,18 +39,18 @@ class CampShow extends React.Component {
             }
     }
     checkImageExist(){
-        if(!this.props.camp.imageData){
+        if(!this.props.camp.imageData || this.props.camp.imageData.length === 0){
             return(
                 <>
                     <div class="carousel-item active">
                     {/* <Image cloudName="dsmgwkxbl" publicId="temtcbjiczlznjxri2id"></Image> */}
-                        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80" class="d-block w-100" alt="..." />
+                        <img id="image-show" src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80" class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item ">
-                        <img src="https://images.unsplash.com/photo-1492648272180-61e45a8d98a7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80" class="d-block w-100" alt="..." />
+                        <img  id="image-show" src="https://images.unsplash.com/photo-1492648272180-61e45a8d98a7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=870&q=80" class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item">
-                        <img src="https://images.unsplash.com/photo-1496080174650-637e3f22fa03?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1119&q=80" class="d-block w-100" alt="..." />
+                        <img id="image-show" src="https://images.unsplash.com/photo-1496080174650-637e3f22fa03?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1119&q=80" class="d-block w-100" alt="..." />
                     </div>
                 </>
             )
@@ -142,7 +144,6 @@ class CampShow extends React.Component {
         }
         let bathroomAverage = bathroom / this.props.camp.comment.length
         let viewAverage = view / this.props.camp.comment.length
-        console.log(bathroomAverage)
 
         return (
             <div className="ui items">
@@ -152,19 +153,21 @@ class CampShow extends React.Component {
                     <div className="middle aligned content">
                         <div className="dexcription">
                             {/* View Average Star: */}
-                            景觀平均分數:
+                            景觀平均分數:&nbsp;&nbsp;&nbsp;
+                            <Rating readonly initialRating={viewAverage} style={{ "color": "green" }} emptySymbol="fa-sm far fa-star" fullSymbol="fa-sm fa fa-star" />
                             <br />
                             {/* Bathroom Average Star: */}
-                            浴廁平均分數:
+                            浴廁平均分數:&nbsp;&nbsp;&nbsp;
+                            <Rating readonly initialRating={bathroomAverage} style={{ "color": "green" }} emptySymbol="fa-sm far fa-star" fullSymbol="fa-sm fa fa-star" />
                         </div>
 
                     </div>
-                    <div className="ui right floated">
+                    {/* <div className="ui right floated">
 
                         <Rating readonly initialRating={viewAverage} style={{ "color": "green" }} emptySymbol="fa-sm far fa-star" fullSymbol="fa-sm fa fa-star" />
                         <br />
                         <Rating readonly initialRating={bathroomAverage} style={{ "color": "green" }} emptySymbol="fa-sm far fa-star" fullSymbol="fa-sm fa fa-star" />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         )
@@ -191,11 +194,11 @@ class CampShow extends React.Component {
                 {/* <Rating  emptySymbol="fa-lg far fa-star" fullSymbol="fa-lg fa fa-star"/> */}
                 {/* {this.getCoordinate()} */}
                 {this.renderImage()}
-                <div class="ui two item menu">
+                {/* <div class="ui two item menu">
                     <a class="item active">Editorials</a>
                     <a class="item"  >Reviews</a>
-                </div>
-                <div className="ui grid">
+                </div> */}
+                <div className="ui grid" style={{marginTop:10}}>
                     <div className="eight wide column">
                         <div className="ui item">
                             <div className="content">

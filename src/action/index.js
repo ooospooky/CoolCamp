@@ -65,9 +65,10 @@ export const fetchCamp = (id) => async dispath => {
 
 //PUT 通常做替換一個資源功能。
 //PATCH 修改資源的部分內容。
-export const editCamp = (id, formValue) => async dispath => {
+export const editCamp = (id, formValue,imageData) => async dispath => {
     const campDoc = doc(db,'camp',id);
      await updateDoc(campDoc, formValue);
+     await updateDoc(campDoc, {"imageData":imageData});
     //  console.log('form',formValue)
      const response = await getDoc(doc(db,"camp",id))
     // const response = await camps.patch(`/camp/${id}`, formValue)
