@@ -45,7 +45,6 @@ class CommentList extends React.Component {
     }
 }
 const mapStoreToProps = (state, ownProps) => {
-    console.log()
     return {
         camps: Object.values(state.camps),
         authId: state.auth.userProfile,

@@ -12,8 +12,15 @@ import Rating from 'react-rating'
 import {Image} from 'cloudinary-react'
 import './CampShow.css'
 
-
+import mapboxgl from 'mapbox-gl'
+// 
+// eslint-disable-next-line import/no-webpack-loader-syntax
+mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
+//https://docs.mapbox.com/mapbox-gl-js/guides/install/#transpiling
+//https://github.com/mapbox/mapbox-gl-js/issues/10173
+//加上以上程式碼因為mapbox-gl與某些babel轉換不兼容，導致mapbox無法呈現
 class CampShow extends React.Component {
+
     state = {loc:[121.53424836855744, 24.94326989048007]}
     componentDidMount() {
         this.props.fetchCamp(this.props.match.params.id)
@@ -103,9 +110,9 @@ class CampShow extends React.Component {
             // ?No. 8, Xinrong St. Zhongli Dist., Taoyuan City
             limit: 1
         }).send()
-        console.log('GEOCODING', geoData.body.features[0].geometry.coordinates)
+        // console.log('GEOCODING', geoData.body.features[0].geometry.coordinates)
         this.setState({loc:geoData.body.features[0].geometry.coordinates})
-        console.log('STATE',this.state.loc)
+        // console.log('STATE',this.state.loc)
 
     }
     renderComment = () => {

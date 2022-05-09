@@ -36,9 +36,9 @@ class CampList extends React.Component {
 
     }
     renderButton(camp) {
-        if (!this.props.authId) return null
+        // if (!this.props.authId) return null
         // console.log('USER_ID:',this.props.authId.fx)
-        if (this.props.authId.fX == camp.userId) {
+        if (this.props.authId.fX === camp.userId) {
             return (
                 <div>
                     <Link className="ui mini right floated negative button" to={`/camp/delete/${camp.id}`}>刪除</Link>
@@ -107,7 +107,7 @@ class CampList extends React.Component {
     }
     renderFilter = () => {
         return (
-            <div className="ui ten column centered grid mb-2">
+            <div className="ui ten column centered grid mb-2"style={{marginTop:15}}>
                 <button onClick={() => this.setState({ where: 'all' })} style={{ width: '60px' }} className="ui active teal button ">全部</button>  &nbsp;&nbsp;&nbsp;
                 <button onClick={() => this.setState({ where: '北部' })} style={{ width: '60px' }} className="ui teal button">北部</button>  &nbsp;&nbsp;&nbsp;
                 <button onClick={() => this.setState({ where: '南部' })} style={{ width: '60px' }} className="ui teal button ">南部</button> &nbsp;&nbsp;&nbsp;
@@ -117,25 +117,20 @@ class CampList extends React.Component {
         )
     }
     render() {
-        const imgWidth =window.innerWidth;
         return (
             <div>
-                {/* <button onClick={()=>console.log(window.innerWidth)} >click</button> */}
-            {/* <img style={{backgroundPosition: 'center',width:'1800px', height:'100%'}} src="https://images.unsplash.com/photo-1488790881751-9068aa742b9b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1032&q=80" /> */}
-                {/* <h2 >CampList</h2> */}
-                <br></br>
                 {this.renderFilter()}
                 <div className="ui  cards three column grid">
                     {this.renderList(this.state.where)}
                 </div>
                 {this.props.authId ? <Link to='/camp/create/' className="ui button primary m-3 mb-5">新增露營地</Link> : null}
+                
           
             </div>
         )
     }
 }
 const mapStoreToProps = (state, ownProps) => {
-    console.log()
     return {
         camps: Object.values(state.camps),
         authId: state.auth.userProfile,

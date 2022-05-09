@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import GoogleAuth from '../GoogleAuth'
 
 const Header = (props) => {
-    // console.log('this.props:',this.props)
+    console.log('header', props)
     return (
         <div className="ui container  " style={{ position: props.style, top: '0' }} >
             <div className=" ui secondary pointing   large  top  menu">
@@ -22,11 +22,13 @@ const Header = (props) => {
                     {/* most popular */}
                     最受歡迎
                 </Link>
+                {}
                 <Link to="/camp/create" className="item">
                     <i className="ui plus  icon"></i>
                     {/* Create campground */}
                     新建露營地
                 </Link>
+             
                 <div className="right menu">
                     <GoogleAuth />
                 </div>

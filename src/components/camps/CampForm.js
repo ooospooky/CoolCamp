@@ -2,15 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import { Field, reduxForm } from 'redux-form'
 import { createCamp } from '../../action'
-import Dropzone from "react-dropzone";
-import { FileInput } from "./FileInput";
-// import fetch from 'node-fetch';
-import DropdownList from "react-widgets/DropdownList";
-import axios from 'axios'
-import camps from '../../apis/camps'
+
 
 class CampCreate extends React.Component {
-
 
     renderSubmit = (formValue) => {
         this.props.onSubmit(formValue)
@@ -36,7 +30,6 @@ class CampCreate extends React.Component {
         )
     }
     render() {
-        // console.log(this.props.publicId)
         return (
             <div>
                 {/* <img src=   alt="" width="100" /> */}
@@ -45,11 +38,6 @@ class CampCreate extends React.Component {
                     <Field name="title" component={this.renderInput} type="text" label="營地名稱 :" />
                     <Field name="description" label="營地描述 :" component={this.renderInput} type="text" />
                     <Field name="location" label="營地位置 :" component={this.renderInput} type="text" />
-                    {/* <Field name="files" component={renderDropzoneInput} /> */}
-                    {/* <input type="file" name="image" multiple /> */}
-                    {/* <Field name="image" component="" /> */}
-                    {/* <FileInput /> */}
-                    {/* <Field name="image" component={FileInput} />  */}
                     <div>
                         <label>營地須知 :</label>
                         <div>
