@@ -187,24 +187,10 @@ class CampShow extends React.Component {
         });
         const lng = [121.53424836855744, 24.94326989048007]
         if (!this.props.camp) return <div>Loading...</div>
-        // this.getCoordinate()
-        // const camplocation = this.getCoordinate()
-        // console.log('camploaction',camplocation)
-        // let tep = this.state.loc
-        // console.log(tep)
+     
         return (
             <div>
-                {/* <div className="ui items"> */}
-                {/* <h2> Camp detail</h2> */}
-               
-                {/* onClick={(e)=>console.log(e)}   */}
-                {/* <Rating  emptySymbol="fa-lg far fa-star" fullSymbol="fa-lg fa fa-star"/> */}
-                {/* {this.getCoordinate()} */}
                 {this.renderImage()}
-                {/* <div class="ui two item menu">
-                    <a class="item active">Editorials</a>
-                    <a class="item"  >Reviews</a>
-                </div> */}
                 <div className="ui grid" style={{marginTop:10}}>
                     <div className="eight wide column">
                         <div className="ui item">
@@ -272,7 +258,6 @@ class CampShow extends React.Component {
     }
 }
 const mapStateToProps = (state, ownProps) => {
-    // console.log("dfdfd", state)
     return {
         camp: state.camps[ownProps.match.params.id],
         auth: state.auth.userProfile,
