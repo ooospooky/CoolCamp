@@ -21,7 +21,7 @@ Other: **mapbox API, Google Oauth login, RESTful API**
 
 version control: **Git**
 
-開發架構：
+### 開發架構：
 
 ![image](https://user-images.githubusercontent.com/80499340/163546431-d3c6f7af-776c-4ff3-a338-a84fbc6f9ddc.png)
 
