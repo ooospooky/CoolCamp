@@ -1,6 +1,7 @@
 # CoolCamp
-[Check out my project!!](https://coolcamp-f0b6e.web.app)
+### [Check Out My Project!!](https://coolcamp-f0b6e.web.app)
 
+若想用手機開啟，也歡迎用我開發的[React Native APP](https://github.com/ooospooky/Cool-Camp-App) 來查看
 
 ### 動機
 &emsp;&emsp;在一次與朋友們的閒聊中聊到不管是自己或是親朋好友都有遇過沒有用心經營的露營地．像是洗澡沒有熱水、環境髒亂等等，因此我們希望能讓喜愛露營或者初次想嘗試露營的人，能夠快速又方便的找到適合自己的營地。更重要的是能讓露營客避免一些沒有用心經營或是骯髒、不舒服的環境。
